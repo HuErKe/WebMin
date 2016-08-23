@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+.header{ height:100px;border-bottom:2px solid #e5e5e5; background-color:#f8f8f8;} 
+.header-bd{width:1000px; margin:0 auto;} 
+.header-bd .logo-area{width:500px; height：60px; padding:10px 0; float:left;}  
+.header-bd .logo-area h1{ 
+	color:#337ab7;
+	float:left;
+	font-size: 48px;  
+} 
+.header-bd .logo-area .logo-brand{ 
+	width:100px;
+	height:32px; line-height:32px;  
+	background:url(images/logo_om.png) no-repeat top left;
+	padding-left:36px;
+	font-size:18px;
+	float:left;
+}	float:left;
+}
+

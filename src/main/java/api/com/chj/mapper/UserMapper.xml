@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="api.com.chj.mapper.UserMapper">  
+	<resultMap id="loginLogResultMap" type="LoginLog"> 
+		<result property="login_id"		column="login_id"/>
+		<result property="user_id"		column="user_id"/>
+		<result property="login_type"		column="login_type"/>
+		<result property="login_time"		column="login_time"/>
+		<result property="login_client_ip"		column="login_client_ip"/>
+		<result property="product_id"		column="product_id"/>
+	</resultMap>
+		
+	<resultMap id="userMapperResultMap" type="User">
+		<result property="user_id"					column="user_id"/>
+		<result property="user_login_name"			column="user_login_name"/>
+		<result property="user_password"			column="user_password"/>
+		<result property="user_name_disp"			column="user_name_disp"/>
+		<result property="organization_id"			column="organization_id"/>
+		<result property="organization_name"		column="organization_name"/>
+		<result property="user_create_date"			column="user_create_date"/>
+		<result property="user_active_date"			column="user_active_date"/>
+		<result property="user_status"				column="user_status"/>
+		<result property="memo"						column="memo"/>
+		<result property="account_id"				column="account_id"/>
+		<result property="product_set"				column="product_set"/>
+		<result property="business_set"				column="business_set"/>
+	</resultMap>
+	<insert id="saveLoginLog">
+		insert into t_login_log(
+			login_id,
+			user_id,
+			login_type,
+			login_time,
+			login_client_ip,
+			product_id
+		)
+		values(
+			#{login_id,jdbcType=INTEGER},
+			#{user_id,jdbcType=INTEGER},
+			#{login_type,jdbcType=INTEGER},
+			<![CDATA[DATE_FORMAT(now(),'%Y-%m-%d %T')]]>,
+			#{login_client_ip,jdbcType=VARCHAR},
+			#{product_id,jdbcType=VARCHAR}
+		)
+	</insert>
+	<select id="getUserByUserLoginName" resultMap="userMapperResultMap">
+		select *
+		from t_user a 
+		where trim(a.user_login_name) = trim(#{0}) 
+	</select>	
+	<select id="getUsersByUserLoginName" resultMap="userMapperResultMap">
+		select *
+		from t_user a 
+		where a.user_login_name = trim(#{0}) 
+	</select>
+	<select id="getValidUsersByUserLoginName" resultMap="userMapperResultMap">
+		select *
+		from t_user a 
+		where a.user_login_name = trim(#{0}) 
+		and a.user_status in(0,1)
+	</select>
+	 
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+			<setting name="jdbcTypeForNull" value="NULL" />
+			<setting name="useGeneratedKeys" value="true"/>			 
+	</settings>
+	<!-- 实体类,简称 -设置别名 -->
+	<typeAliases>    
+		<typeAlias alias="LoginLog" type="api.com.chj.po.LoginLog" />   
+		<typeAlias alias="User" type="api.com.chj.po.User" />  
+		<typeAlias alias="ThirdApiLog" type="api.com.chj.po.third.ThirdApiLog" />  
+	</typeAliases> 
+</configuration>  

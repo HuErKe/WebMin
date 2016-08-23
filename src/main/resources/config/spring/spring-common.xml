@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd       
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+     
+	<!-- 启用spring mvc 注解 ,需要加入xmlns:context,否则这里会报错--> 
+ 	<context:annotation-config/>   
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+		<property name="locations" value="classpath:/config/spring/jdbc.properties" />
+	</bean> 
+  
+ 
+ 
+ 	<bean id="userDataSource"   class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">  
+        <property name="driverClassName"  value="${jdbc.mysql.driverClassName}"></property>  
+         
+
+        <property name="url" value="${jdbc.mysql.local.url}"></property>  
+        <property name="username" value="${jdbc.mysql.local.user.username}"></property>  
+        <property name="password" value="${jdbc.mysql.local.user.password}"></property>   
+        
+        <property name="maxActive" value="${jdbc.mysql.maxActive}"></property>  
+        <property name="maxIdle" value="${jdbc.mysql.maxIdle}"></property>  
+        <property name="maxWait" value="${jdbc.mysql.maxWait}"></property>      
+        <property name="initialSize" value="${jdbc.mysql.initialSize}"></property>  
+        <property name="minIdle" value="${jdbc.mysql.minIdle}"></property>          
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.mysql.timeBetweenEvictionRunsMillis}"></property> 
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.mysql.minEvictableIdleTimeMillis}"></property> 
+        <property name="numTestsPerEvictionRun" value="${jdbc.mysql.numTestsPerEvictionRun}"></property>         
+        <property name="validationQuery" value="select 1"></property> 
+        <property name="testWhileIdle" value="true"></property> 
+        <property name="testOnBorrow" value="false"></property> 
+        <property name="testOnReturn" value="true"></property> 
+    </bean>  
+    
+    <bean id="consOptionSettings" class="api.com.chj.ops.ConsOptionSettings">
+    	<property name="apiServerUtl" value="http://192.168.1.163:8080/HuiYuApiServer//user/getUserInfo"></property>
+<!--     	<property name="apiServerUtl" value="http://api.huiyu.org.cn/HuiYuApiServer/user/getUserInfo"></property> -->
+    </bean>
+  
+    <import resource="classpath:config/spring/spring-mybatis.xml"/>
+     
+    
+    <bean class="api.com.chj.core.SpringContextHolder" lazy-init="false" /> 
+    
+</beans>   

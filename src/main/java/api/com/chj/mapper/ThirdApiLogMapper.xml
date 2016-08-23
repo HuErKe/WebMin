@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="api.com.chj.mapper.ThirdApiLogMapper">   
+	<resultMap id="thirdApiLogResultMap" type="ThirdApiLog">
+		<result property="query_id"		column="query_id"/>
+		<result property="query_time"		column="query_time"/>
+		<result property="api_id"		column="api_id"/>
+		<result property="req_url"		column="req_url"/>
+		<result property="req_method"		column="req_method"/>
+		<result property="request_text"		column="request_text"/>
+		<result property="response_text"		column="response_text"/>
+	</resultMap>
+
+	<select id="getThirdApiLogs" resultMap="thirdApiLogResultMap">
+		select query_id,
+			query_time,
+			api_id,
+			req_url,
+			req_method,
+			request_text,
+			response_text
+		from t_3rd_api_log a
+		<![CDATA[where a.query_id > #{queryIdBegin,jdbcType=VARCHAR} ]]>
+		<![CDATA[and a.query_id <  #{queryIdEnd,jdbcType=VARCHAR} ]]>
+		<![CDATA[and INSTR(a.api_id, #{baseDS,jdbcType=VARCHAR} ) > 0  ]]>
+		<![CDATA[and INSTR(a.req_url, #{baseUrl,jdbcType=VARCHAR} ) > 0 ]]>
+	</select>
+
+	<insert id="batchSaveThirdApiLogInList"> 
+		insert into t_3rd_api_log(
+			query_id,
+			query_time,
+			api_id,
+			req_url,
+			req_method,
+			request_text,
+			response_text
+		) 
+		values 
+	    <foreach collection="list" item="item" separator=",">
+	    	(#{item.query_id,jdbcType=VARCHAR},
+			<![CDATA[DATE_FORMAT(now(),'%Y-%m-%d %T')]]>,
+			#{item.api_id,jdbcType=VARCHAR},
+			#{item.req_url,jdbcType=VARCHAR},
+			#{item.req_method,jdbcType=VARCHAR},
+			#{item.request_text,jdbcType=VARCHAR},
+			#{item.response_text,jdbcType=VARCHAR}) 
+	    </foreach>
+	</insert>	 
+	
+	<insert id="saveThirdApiLog">
+		insert into t_3rd_api_log (
+			query_id,
+			query_time,
+			api_id,
+			req_url,
+			req_method,
+			request_text,
+			response_text
+		)    
+		VALUES   	        
+	    (			
+			#{query_id,jdbcType=VARCHAR},
+			<![CDATA[DATE_FORMAT(now(),'%Y-%m-%d %T')]]>,
+			#{api_id,jdbcType=VARCHAR},
+			#{req_url,jdbcType=VARCHAR},
+			#{req_method,jdbcType=VARCHAR},
+			#{request_text,jdbcType=VARCHAR},
+			#{response_text,jdbcType=VARCHAR}						
+	    )   
+	</insert> 
+</mapper>

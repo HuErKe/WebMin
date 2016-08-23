@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+.info-box{ padding:1%;}
+.info-box:after{ display:block; content:''; clear:both;} 
+.info-box .info-theme{height:30px; line-height:30px; text-align:center; color:#337ab9;box-shadow: 1px 2px 3px 1px #666;
+ font-size:20px;
+}
+.info-box .info-content{}
+.info-box .info-content .double-col-container{width:98%;}
+.info-box .info-content .double-col-container .double-col{ padding-left:5%; width:45%; float:left;height:45px; line-height:45	px; }
+.main{} 
+.main .main-bd{ width:1000px; margin:0 auto; position:relative;}
+.main .main-bd .report{ margin-top:20px; margin-bottom:25px;position:relative; border:medium none #999; box-shadow:6px 8px 12px 6px #666;} 
+.main .main-bd .report .seral{ padding:0 30px; height:30px; line-height:30px; border-bottom:1px solid #000;}
+.main .main-bd .report .seral .report-number{ float:left;}
+.main .main-bd .report .seral .query-time{ float:right;}
+.main .main-bd .report .seral .personal-info{}
+
+.webloan-blkNms{}
+.loanBehInfo{}
+.webloan-blkNms table,
+.loanBehInfo table{ margin:10px auto;width:96%; border-collapse:collapse;border-spacing:0; border:1px solid #c0c0c0;}
+.webloan-blkNms table td,
+.webloan-blkNms table th,
+.loanBehInfo table td,
+.loanBehInfo table th{ text-align:center;border:1px solid #c0c0c0; height:30px; line-height:30px;} 
+.webloan-blkNms table th,
+.loanBehInfo table th{ background:#eee;}
+.webloan-blkNms .table1 {}
+.webloan-blkNms .table1 th,
+.webloan-blkNms .table1 td{ width:50%;}
+.webloan-blkNms .table2 {}
+.webloan-blkNms .table2 th,
+.webloan-blkNms .table2 td{width:20%;}
+.loanBehInfo{}
+.loanBehInfo table th.loanBeh-item,
+.loanBehInfo table td.loanBeh-item{ width:30%;}
+.loanBehInfo table th.loanBeh-content,
+.loanBehInfo table td.loanBeh-content{width:70%;}
+
+
+table#table-webloan-detail{}
+table#table-webloan-detail td,table#table-webloan-detail th{ width:16%;}
+table#table-webloan-rough{}
+table#table-webloan-rough th,table#table-webloan-rough td{ width:50%;}
+
+.notice{ font-size:12px; color:#666;}
+.notice p{ margin-bottom:5px;}

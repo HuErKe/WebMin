@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+.main{} 
+.main .main-bd{ width:1000px; margin:0 auto; height:400px; position:relative;}
+.main .main-bd .login-form { padding:100px 50px;}
+.main .main-bd .login-form .input-area{ background:url(images/be.png) no-repeat left;
+	height:200px; padding-left:280px; position:relative;
+}
+.main .main-bd .login-form .input-area .input-info{ 
+width:500px; border:2px solid #999; padding:20px; border-radius:5px;
+	position:absolute;  right:30px; top:-20px; height:260px;
+}
+.main .main-bd .login-form .input-area .input-info .vl-tip{
+	 height:30px; line-height:30px; min-height:1px; text-align:center; color:#f00;}
+
